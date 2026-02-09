@@ -48,7 +48,7 @@ function HomePage() {
             setError("");
                 await createActivity({
                     ...form,
-                    trajenje: Number(form.trajanje),
+                    trajanje: Number(form.trajanje),
                 });
             
                 setForm({ ime: "", opis: "", kategorija: "", datum: "", trajanje: ""});
@@ -57,6 +57,16 @@ function HomePage() {
             setError(String(err.message || err))
         }
     }
+
+    async function onDelete(id){
+        try {
+            setError("");
+        await deleteActivity(id);
+        await load();
+    } catch(err) {
+        setError(String(err.message || err));
+    }
+}
 
   return (
     <>
@@ -144,7 +154,7 @@ function HomePage() {
                <li key={a.id} className="item">
                 <b>{a.ime}</b> – {a.kategorija} – {a.trajanje} min – {a.datum}
                 {a.opis && <div>{a.opis}</div>}
-                <button>🗑️</button>
+                <button onClick={onDelete(a.id)}>🗑️</button>
                  </li>
             ))}
           </ul>
