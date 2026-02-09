@@ -25,7 +25,7 @@ function HomePage() {
       <nav className="navbar">
         <div className="activity-tracker">
           <h1>
-            <b>Activity Tracker ⌚</b>
+            <b>Activity Tracker </b>
           </h1>
         </div>
       </nav>
