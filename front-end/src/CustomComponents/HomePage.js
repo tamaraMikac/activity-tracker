@@ -15,6 +15,19 @@ function HomePage() {
     datum: "",
   });
 
+  const categories = [
+  "LEARNING",
+  "TRAINING",
+  "COOKING",
+  "READING",
+  "WORK",
+  "FAMILY",
+  "HEALTH",
+  "HOUSEHOLD",
+  "SOCIAL",
+  "OTHER",
+];
+
   function onChange(e) {
     setForm((f) => ({
       ...f,
@@ -59,6 +72,7 @@ function HomePage() {
     }
 
     async function onDelete(id){
+        if(!window.confirm("Delete this activity?")) return;
         try {
             setError("");
         await deleteActivity(id);
@@ -67,6 +81,23 @@ function HomePage() {
         setError(String(err.message || err));
     }
 }
+
+    const minutesByCategory = categories.reduce((acc, c) => {
+   acc[c] = 0;
+     return acc;
+   }, {});
+
+  for (const a of activities) {
+  const cat = a.kategorija || "OTHER";
+  const mins = Number(a.trajanje || 0);
+  if (minutesByCategory[cat] === undefined) minutesByCategory[cat] = 0;
+  minutesByCategory[cat] += mins;
+}
+
+
+const sortedActivities = [...activities].sort(
+        (a,b) => new Date(b.datum) - new Date(a.datum)
+      );
 
   return (
     <>
@@ -141,7 +172,11 @@ function HomePage() {
         </form>
       </div>
 
+
+    
+
            <div className="activity-list">
+            
         <h1>
            <b>My Activities</b>
         </h1>
@@ -150,7 +185,7 @@ function HomePage() {
            <p>No activities yet</p>
         ) : (
          <ul className="list">
-            {activities.map((a) => (
+            {sortedActivities.map((a) => (
                <li key={a.id} className="item">
                 <b>{a.ime}</b> – {a.kategorija} – {a.trajanje} min – {a.datum}
                 {a.opis && <div>{a.opis}</div>}
@@ -168,44 +203,44 @@ function HomePage() {
         <div className="statistika">
           <div className="stat-row">
             <span>Learning</span>
-            <b> min</b>
+            <b> {minutesByCategory.LEARNING}min</b>
           </div>
           <div className="stat-row">
             <span>Training</span>
-            <b> min</b>
+            <b> {minutesByCategory.TRAINING}min</b>
           </div>
           <div className="stat-row">
             <span>Cooking</span>
-            <b> min</b>
+            <b>{minutesByCategory.COOKING} min</b>
           </div>
           <div className="stat-row">
             <span>Reading</span>
-            <b> min</b>
+            <b> {minutesByCategory.READING}min</b>
           </div>
           <div className="stat-row">
             <span>Work</span>
-            <b> min</b>
+            <b> {minutesByCategory.WORK} min</b>
           </div>
           <div className="stat-row">
             <span>Family</span>
-            <b> min</b>
+            <b>{minutesByCategory.FAMILY} min</b>
           </div>
           <div className="stat-row">
             <span>Health</span>
-            <b> min</b>
+            <b> {minutesByCategory.HEALTH}min</b>
           </div>
 
                <div className="stat-row">
             <span>Household</span>
-            <b> min</b>
+            <b> {minutesByCategory.HOUSEHOLD}min</b>
           </div>
           <div className="stat-row">
             <span>Social</span>
-            <b> min</b>
+            <b> {minutesByCategory.SOCIAL} min</b>
           </div>
           <div className="stat-row">
             <span>Other</span>
-            <b> min</b>
+            <b> {minutesByCategory.OTHER}min</b>
           </div>
         </div>
       </section>
