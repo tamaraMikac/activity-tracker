@@ -24,7 +24,7 @@ function HomePage() {
 
   async function load() {
     try {
-        setError(false);
+        setError("");
         const data = await getActivities();
         setActivities(data);
     } catch(e) {
@@ -88,7 +88,7 @@ function HomePage() {
           <b>Add New Activity</b>
         </h1>
 
-        <form className="form" onSubmit={onSave()}>
+          <form className="form" onSubmit={onSave}>
           <input
             name="ime"
             placeholder="Activity name"
@@ -154,7 +154,7 @@ function HomePage() {
                <li key={a.id} className="item">
                 <b>{a.ime}</b> – {a.kategorija} – {a.trajanje} min – {a.datum}
                 {a.opis && <div>{a.opis}</div>}
-                <button onClick={onDelete(a.id)}>🗑️</button>
+                <button type="button" onClick={() => onDelete(a.id)}>🗑️</button>
                  </li>
             ))}
           </ul>

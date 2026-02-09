@@ -21,7 +21,7 @@ export async function createActivity(activity){
 }
 
 export async function deleteActivity(id) {
-    const res = await fetch(`{BASE}/api/activities/${id}`, {
+    const res = await fetch(`${BASE}/api/activities/${id}`, {
     method: "DELETE",
     });
 
