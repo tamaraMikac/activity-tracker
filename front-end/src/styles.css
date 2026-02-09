@@ -1,0 +1,169 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f5f5f5;
+  color: #0f172a;
+}
+
+.navbar {
+  background: #ffffff;
+  color: #0f172a;
+  padding: 28px 40px;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+}
+.activity-tracker h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.layout {
+  display: flex;
+  gap: 20px;
+  margin: 20px auto;
+  align-items: flex-start;
+  padding: 0 10px;
+  justify-content: center;
+}
+.right {
+  position: sticky;
+  top: 90px;
+}
+
+.new-activity,
+.activity-list,
+.card {
+  background: white;
+  margin: 20px 30px;
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  width: 750px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+.new-activity h1,
+.activity-list h1,
+.card h1 {
+  font-size: 26px;
+  margin: 0 0 20px;
+  letter-spacing: 1px;
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+  justify-content: center;
+}
+
+.form input,
+.form select,
+.form button {
+  width: 450px;
+  height: 44px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.form input,
+.form select {
+  border: 1px solid #e5e7eb;
+}
+
+.form button {
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+}
+
+.form input::placeholder {
+  color: #0f172a !important;
+  opacity: 1;
+}
+
+.statistika {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  letter-spacing: 1px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 6px;
+  letter-spacing: 1px;
+  background: #f1f5ff;
+  border: 1px solid #dbeafe;
+}
+
+.stat-row:nth-child(odd) {
+  background: #f1f5ff;
+}
+
+.stat-row:nth-child(even) {
+  background: #e0e7ff;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 7px;
+  background-color: #fff;
+  text-align: left;
+}
+
+.activityHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.activityInfo {
+  display: flex;
+  gap: 12px;
+  margin-top: -18px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.category {
+  background: #eef2ff;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.activityDesc {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.deleteBtn {
+    margin-left: 660px;
+    margin-top: 5px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  text-align: right;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
