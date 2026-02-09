@@ -114,11 +114,53 @@ body {
 .list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .item {
-  border-bottom: 1px solid #ddd;
-  padding: 6px 0;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 7px;
+  background-color: #fff;
+  text-align: left;
+}
+
+.activityHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.activityInfo {
+  display: flex;
+  gap: 12px;
+  margin-top: -18px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.category {
+  background: #eef2ff;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.activityDesc {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.deleteBtn {
+    margin-left: 660px;
+    margin-top: 5px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  text-align: right;
 }
 
 .error {

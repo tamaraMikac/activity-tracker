@@ -187,9 +187,21 @@ const sortedActivities = [...activities].sort(
          <ul className="list">
             {sortedActivities.map((a) => (
                <li key={a.id} className="item">
-                <b>{a.ime}</b> – {a.kategorija} – {a.trajanje} min – {a.datum}
-                {a.opis && <div>{a.opis}</div>}
-                <button type="button" onClick={() => onDelete(a.id)}>🗑️</button>
+                <div className="activityyHeader">
+                <strong>{a.ime}</strong>
+                </div>
+                                
+                <button type="button"className="deleteBtn" onClick={() => onDelete(a.id)}>🗑️</button>
+
+
+               <div className="activityInfo">
+              <span className="category">{a.kategorija}</span>
+              <span>{a.trajanje} min</span>
+               <span>{a.datum}</span>
+          </div>
+
+      {a.opis && <div className="activityDesc">{a.opis}</div>}
+
                  </li>
             ))}
           </ul>
