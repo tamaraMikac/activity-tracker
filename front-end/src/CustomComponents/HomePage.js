@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles.css";
+import { getActivities, createActivity, deleteActivity } from "../api/activities";
+
 
 function HomePage() {
   const [activities, setActivities] = useState([]);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
 
   const [form, setForm] = useState({
     ime: "",
@@ -19,6 +21,42 @@ function HomePage() {
       [e.target.name]: e.target.value,
     }));
   }
+
+  async function load() {
+    try {
+        setError(false);
+        const data = await getActivities();
+        setActivities(data);
+    } catch(e) {
+       setError(String(e.message || e));
+    }
+}
+   
+    useEffect(() => {
+        load();
+    }, []);
+ 
+    async function onSave(e) {
+    e.preventDefault();
+
+    if(!form.ime.trim()) return setError("Activity name is required.")
+    if(!form.datum) return setError("Date is required.")
+    if(Number(form.trajanje) <= 0 ) return setError("Duration must be positive!")
+    if(!form.kategorija) return setError("Category is required.")
+
+        try {
+            setError("");
+                await createActivity({
+                    ...form,
+                    trajenje: Number(form.trajanje),
+                });
+            
+                setForm({ ime: "", opis: "", kategorija: "", datum: "", trajanje: ""});
+                await load();
+        } catch(err) {
+            setError(String(err.message || err))
+        }
+    }
 
   return (
     <>
@@ -40,7 +78,7 @@ function HomePage() {
           <b>Add New Activity</b>
         </h1>
 
-        <form className="form">
+        <form className="form" onSubmit={onSave()}>
           <input
             name="ime"
             placeholder="Activity name"
