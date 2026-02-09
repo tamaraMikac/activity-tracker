@@ -32,6 +32,9 @@ function HomePage() {
 
       {error && <div className="error">{error}</div>}
 
+
+    <div className="layout">
+        <div className="left">
       <div className="new-activity">
         <h1>
           <b>Add New Activity</b>
@@ -90,7 +93,29 @@ function HomePage() {
         </form>
       </div>
 
-      <section className="card">
+           <div className="activity-list">
+        <h1>
+           <b>My Activities</b>
+        </h1>
+
+        {activities.length === 0 ? (
+           <p>No activities yet</p>
+        ) : (
+         <ul className="list">
+            {activities.map((a) => (
+               <li key={a.id} className="item">
+                <b>{a.ime}</b> – {a.kategorija} – {a.trajanje} min – {a.datum}
+                {a.opis && <div>{a.opis}</div>}
+                <button>🗑️</button>
+                 </li>
+            ))}
+          </ul>
+        )}
+      </div>
+      </div>
+
+        <div className="right">
+        <section className="card">
         <h2>Statistics</h2>
         <div className="statistika">
           <div className="stat-row">
@@ -136,25 +161,7 @@ function HomePage() {
           </div>
         </div>
       </section>
-
-           <div className="activity-list">
-        <h1>
-           <b>My Activities</b>
-        </h1>
-
-        {activities.length === 0 ? (
-           <p>No activities yet</p>
-        ) : (
-         <ul className="list">
-            {activities.map((a) => (
-               <li key={a.id} className="item">
-                <b>{a.ime}</b> – {a.kategorija} – {a.trajanje} min – {a.datum}
-                {a.opis && <div>{a.opis}</div>}
-                <button>🗑️</button>
-                 </li>
-            ))}
-          </ul>
-        )}
+      </div>
       </div>
     </>
   );
